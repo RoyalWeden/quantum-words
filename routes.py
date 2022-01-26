@@ -8,7 +8,50 @@ conn = psycopg2.connect(os.getenv('POSTGRES_URL'))
 
 @app.route('/api/v1/')
 def home():
-    return 'API v1 Home'
+    return '''
+    <h2 id="base-url-https-quantumwords-herokuapp-com-api-v1">base url: <a href="https://quantumwords.herokuapp.com/api/v1">https://quantumwords.herokuapp.com/api/v1</a></h2>
+<table>
+<thead>
+<tr>
+<th>ENDPOINT</th>
+<th>ARGS</th>
+<th>RETURNS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/word/create</td>
+<td>api_key, word, definition</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>/word/get</td>
+<td>word/id</td>
+<td>id, word, definition</td>
+</tr>
+<tr>
+<td>/word/remove</td>
+<td>api_key, word/id</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>/word/all</td>
+<td>n/a</td>
+<td>(id, word, definition) for each stored</td>
+</tr>
+<tr>
+<td>/word/random</td>
+<td>n/a</td>
+<td>id, word, definition</td>
+</tr>
+<tr>
+<td>word/droptable</td>
+<td>api_key</td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
+'''
 
 @app.route('/api/v1/word/create', methods=['GET'])
 def create_word():
